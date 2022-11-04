@@ -1,0 +1,71 @@
+
+<span>Bienvenue {{utilisateur.username}}</span>
+<!-- Barre de recherche -->
+<form [formGroup]="searchForm">
+<span class="p-input-icon-left">
+  <i class="pi pi-search"></i>
+  <input type="text" pInputText  placeholder="Search" (input)="searchBook()" formControlName="search" class="p-inputtext p-component p-element ng-pristine ng-valid ng-touched">         
+</span>
+</form>
+
+
+<!-- Table de livres -->
+<p-table [value]="books" responsiveLayout="scroll">
+  <ng-template pTemplate="header">
+  <tr>
+    <th scope="col">Library</th>
+  </tr>
+  </ng-template>
+<ng-template pTemplate="body" let-book  >
+  <tr *ngIf="recherche === '' || book.titre.toLowerCase().includes(recherche)">
+    <td>{{book.id}}</td>
+    <td>{{ book.titre }}</td>
+    <td>{{ book.auteur }}</td>
+    <td>{{ book.editeur }}</td>
+    <td>{{ book.annee }}</td>
+    <td><button pButton type="button" class="p-button-danger" icon="pi pi-times" iconPos="left" #moins (click)="deleteBook(book.id)" ></button></td>
+  </tr>
+</ng-template>
+</p-table>
+
+
+<!-- NgForm pour recuperer les valeurs des input et add le livre -->
+<div class="bookForm">
+<form (ngSubmit)="addBook()" [formGroup]="bookForm">
+<span class="p-float-label">
+  <input id="float-input" type="text" pInputText class="p-inputtext p-component p-element ng-pristine ng-valid ng-touched" formControlName="titre" #titre> 
+  <label for="float-input">Titre</label>
+</span>
+
+
+
+<span class="p-float-label">
+  <input id="float-input" type="text" pInputText class="p-inputtext p-component p-element ng-pristine ng-valid ng-touched" formControlName="auteur" #auteur> 
+  <label for="float-input">Auteur</label>
+</span>
+
+
+
+<span class="p-float-label">
+  <input id="float-input" type="text" pInputText class="p-inputtext p-component p-element ng-pristine ng-valid ng-touched" formControlName="editeur" #editeur> 
+  <label for="float-input">Editeur</label>
+</span>
+
+
+
+<span class="p-float-label">
+  <input id="float-input" type="text" pInputText class="p-inputtext p-component p-element ng-pristine ng-valid ng-touched" formControlName="annee" #annee> 
+  <label for="float-input">Annee</label>
+</span>
+<button pButton type="submit" class="p-button-raised p-button-warning p-button-sm"  [disabled]="bookForm.invalid">add a book</button>
+</form>
+</div>
+
+<!-- Boutton available books -->
+<button pButton type="button" class="p-button-raised p-button-sm" (click)="getBooks()"  >available books</button>
+ 
+
+
+
+
+

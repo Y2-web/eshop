@@ -1,0 +1,19 @@
+input.ng-valid.ng-dirty {
+    border: 3px green solid;
+}
+input.ng-invalid.ng-dirty {
+    border: 3px red solid;
+}
+
+.loginForm
+{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: space-around;
+}
+
+.loginForm div
+{
+    margin: 12px;
+}

@@ -1,0 +1,29 @@
+<form (ngsubmit)="checkUser()" [formGroup]="loginForm" (ngSubmit)="submit()" class="loginForm" >
+
+    <div>
+      <span class="p-float-label">
+        <input id="float-input" type="text" pInputText class="p-inputtext p-component p-element ng-pristine ng-valid ng-touched" formControlName="username" #username> 
+        <label for="float-input">Username</label>
+      </span>
+    </div>
+      
+      
+      
+    <div>
+      <span class="p-float-label">
+        <input id="float-input" type="text" pInputText class="p-inputtext p-component p-element ng-pristine ng-valid ng-touched" formControlName="password" #password> 
+        <label for="float-input">Password</label>
+      </span>
+    </div>
+
+      
+<div><button pButton type="submit" class="p-button-raised p-button-warning p-button-sm"  (click)="checkUser()" [disabled]="loginForm.invalid">Connect</button></div>
+</form>
+
+<!--Les div ne resolvent pas le probleme des margin paddding qui ne fonctionnent pas-->
+
+
+<!-- ng ngModel => piloter le formulaire via l'IHM
+reactiveform => piloter le formulaire via TS 
+CRUD=> ecran qui liste une table, lister supprimer modifier ajouter (2 tables minimum)
+-->
